@@ -30,6 +30,18 @@ class DemoTest {
         assertEquals(currentLocation.getDirection(),marsRover.getLocation().getDirection());
     }
     @Test
+    void should_turn_left_when_executeCommand_given_M_in_west(){
+        Location location=new Location(0,0,Direction.W);
+        MarsRover marsRover=new MarsRover(location);
+
+        marsRover.executeCommand(Command.M);
+
+        Location currentLocation =new Location(-1,0,Direction.W);
+        assertEquals(currentLocation.getLocationY(),marsRover.getLocation().getLocationY());
+        assertEquals(currentLocation.getLocationX(),marsRover.getLocation().getLocationX());
+        assertEquals(currentLocation.getDirection(),marsRover.getLocation().getDirection());
+    }
+    @Test
     void should_turn_left_when_executeCommand_given_L_in_north(){
         Location location=new Location(0,0,Direction.N);
         MarsRover marsRover=new MarsRover(location);
@@ -54,6 +66,18 @@ class DemoTest {
         assertEquals(currentLocation.getDirection(),marsRover.getLocation().getDirection());
     }
     @Test
+    void should_turn_left_when_executeCommand_given_L_in_west(){
+        Location location=new Location(0,0,Direction.W);
+        MarsRover marsRover=new MarsRover(location);
+
+        marsRover.executeCommand(Command.L);
+
+        Location currentLocation =new Location(0,0,Direction.S);
+        assertEquals(currentLocation.getLocationY(),marsRover.getLocation().getLocationY());
+        assertEquals(currentLocation.getLocationX(),marsRover.getLocation().getLocationX());
+        assertEquals(currentLocation.getDirection(),marsRover.getLocation().getDirection());
+    }
+    @Test
     void should_turn_left_when_executeCommand_given_R_in_north(){
         Location location=new Location(0,0,Direction.N);
         MarsRover marsRover=new MarsRover(location);
@@ -73,6 +97,18 @@ class DemoTest {
         marsRover.executeCommand(Command.R);
 
         Location currentLocation =new Location(0,0,Direction.W);
+        assertEquals(currentLocation.getLocationY(),marsRover.getLocation().getLocationY());
+        assertEquals(currentLocation.getLocationX(),marsRover.getLocation().getLocationX());
+        assertEquals(currentLocation.getDirection(),marsRover.getLocation().getDirection());
+    }
+    @Test
+    void should_turn_left_when_executeCommand_given_R_in_west(){
+        Location location=new Location(0,0,Direction.W);
+        MarsRover marsRover=new MarsRover(location);
+
+        marsRover.executeCommand(Command.R);
+
+        Location currentLocation =new Location(-1,0,Direction.N);
         assertEquals(currentLocation.getLocationY(),marsRover.getLocation().getLocationY());
         assertEquals(currentLocation.getLocationX(),marsRover.getLocation().getLocationX());
         assertEquals(currentLocation.getDirection(),marsRover.getLocation().getDirection());

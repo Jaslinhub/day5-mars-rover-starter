@@ -185,5 +185,17 @@ class DemoTest {
         assertEquals(currentLocation.getLocationX(),marsRover.getLocation().getLocationX());
         assertEquals(currentLocation.getDirection(),marsRover.getLocation().getDirection());
     }
+    @Test
+    void should_step_back_when_executeCommand_given_B_in_east(){
+        Location location=new Location(0,0,Direction.E);
+        MarsRover marsRover=new MarsRover(location);
+
+        marsRover.executeCommand(Command.B);
+
+        Location currentLocation =new Location(-1,0,Direction.E);
+        assertEquals(currentLocation.getLocationY(),marsRover.getLocation().getLocationY());
+        assertEquals(currentLocation.getLocationX(),marsRover.getLocation().getLocationX());
+        assertEquals(currentLocation.getDirection(),marsRover.getLocation().getDirection());
+    }
 
 }

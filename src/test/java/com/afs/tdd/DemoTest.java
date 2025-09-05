@@ -16,4 +16,14 @@ class DemoTest {
         assertEquals(currentLocation.getLocationY(),marsRover.getLocation().getLocationY());
 
     }
+    @Test
+    void should_turn_left_when_executeCommand_given_L(){
+        Location location=new Location(0,0,Direction.N);
+        MarsRover marsRover=new MarsRover(location);
+
+        marsRover.executeCommand(Command.L);
+
+        Location currentLocation =new Location(0,0,Direction.W);
+        assertEquals(currentLocation.getLocationY(),marsRover.getLocation().getLocationY());
+    }
 }

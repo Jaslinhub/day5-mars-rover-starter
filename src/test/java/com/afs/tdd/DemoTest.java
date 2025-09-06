@@ -205,7 +205,7 @@ class DemoTest {
         MarsRover marsRover=new MarsRover(location);
         String earthCommand="MMLRRM";
 
-        marsRover.executeCommand(earthCommand);
+        marsRover.batchExecuteCommand(earthCommand);
 
         Location currentLocation =new Location(1,2,Direction.E);
         assertEquals(currentLocation.getLocationY(),marsRover.getLocation().getLocationY());

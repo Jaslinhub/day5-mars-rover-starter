@@ -212,5 +212,16 @@ class DemoTest {
         assertEquals(currentLocation.getLocationX(),marsRover.getLocation().getLocationX());
         assertEquals(currentLocation.getDirection(),marsRover.getLocation().getDirection());
     }
+    @Test
+    void should_log_error_when_given_invalid_batch_commands(){
+        Location location=new Location(0,0,Direction.N);
+        MarsRover marsRover=new MarsRover(location);
+        String earthCommand="MMTLRRM";
+        marsRover.batchExecuteCommand(earthCommand);
+        Location currentLocation =new Location(0,0,Direction.N);
+        assertEquals(currentLocation.getLocationY(),marsRover.getLocation().getLocationY());
+        assertEquals(currentLocation.getLocationX(),marsRover.getLocation().getLocationX());
+        assertEquals(currentLocation.getDirection(),marsRover.getLocation().getDirection());
+    }
 
 }

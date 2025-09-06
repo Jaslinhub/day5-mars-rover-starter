@@ -3,9 +3,11 @@ package com.afs.tdd;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Logger;
+
 
 public class MarsRover {
-
+    Logger logger = Logger.getLogger(getClass().getName());
 
     private Location location;
     private List<Direction> directions= Arrays.asList(Direction.N,Direction.E,Direction.S,Direction.W);
@@ -74,8 +76,19 @@ public class MarsRover {
         }
     }
     public void batchExecuteCommand(String batchCommand){
+        if (!isBatchCommandValid(batchCommand)){
+            logger.info(String.format("%s is not a set of valid commands",batchCommand));
+            return;
+        }
         List<Command> commands=extractCommandsFromString(batchCommand);
-        commands.stream().forEach(command -> executeCommand(command));
+        commands.forEach(this::executeCommand);
+    }
+    private boolean isBatchCommandValid(String batchCommand){
+        if (batchCommand==null||batchCommand.trim().isEmpty()){
+            return false;
+        }
+        String regex="^[MLRB]+$";
+        return batchCommand.matches(regex);
     }
     private List<Command> extractCommandsFromString(String batchCommand){
         char[] commandInChar=batchCommand.toCharArray();

@@ -91,28 +91,29 @@ public class MarsRover {
         return batchCommand.matches(regex);
     }
     private List<Command> extractCommandsFromString(String batchCommand){
-        char[] commandInChar=batchCommand.toCharArray();
         List<Command> commands=new ArrayList<>();
-        for(char singleCommand:commandInChar){
-            switch (singleCommand){
-                case 'M':{
-                    commands.add(Command.M);
-                    break;
+        Arrays.stream(batchCommand.split("")).forEach(
+                s -> {
+                    switch (s){
+                        case "M":{
+                            commands.add(Command.M);
+                            break;
+                        }
+                        case "L":{
+                            commands.add(Command.L);
+                            break;
+                        }
+                        case "R":{
+                            commands.add(Command.R);
+                            break;
+                        }
+                        case "B":{
+                            commands.add(Command.B);
+                            break;
+                        }
+                    }
                 }
-                case 'L':{
-                    commands.add(Command.L);
-                    break;
-                }
-                case 'R':{
-                    commands.add(Command.R);
-                    break;
-                }
-                case 'B':{
-                    commands.add(Command.B);
-                    break;
-                }
-            }
-        }
+        );
         return commands;
     }
 }
